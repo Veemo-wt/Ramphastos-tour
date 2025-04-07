@@ -430,3 +430,23 @@ footer {
     padding-top: 2rem;
     padding-bottom: 0;
 }
+.person-block{
+    background: var(--accent-mono);
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: var(--accent) 0px 0px 15px 0px;
+}
+.pfp-img
+{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-right: 2rem;
+    box-shadow: var(--accent) 0px 0px 15px 0px;
+}
+.person-info{
+}
