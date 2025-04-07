@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ramphastos Tour</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-left">
+            <img src="logo.png" class="nav-image">
+            <h2 class="nav-title">Ramphastos Tour</h2>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right"></div>
+    </nav>
+</header>
+<h1>Afryka</h1>
+<section class="product-section">
+    <div class="product-slider">
+        <button class="prev">&#10094;</button>
+        <div class="slider-window">
+            <div class="slider-track">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/101154514.jpg?k=00804df093d6606ad19451815d39c0b0cec764cdfc1ff5a7529be5d1cf68f673&o=&hp=1" class="slider-image">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/101153381.jpg?k=4ceff6d61feb400adb150193e4576380795d415029dccc2b95218673ed76a20b&o=&hp=1" class="slider-image">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/134193894.jpg?k=e8adb98617fa3d40a4ad92c1fff2d40da0022f260024f09ab8cb04b54810bd17&o=&hp=1" class="slider-image">
+            </div>
+        </div>
+        <button class="next">&#10095;</button>
+    </div>
+    <div class="product-info">
+        <h2>Ekskluzywny wyjazd na Maderę</h2>
+        <p>Odkryj piękno Madery z naszym pakietem premium, zawierającym zakwaterowanie, przewodnika i codzienne atrakcje.</p>
+        <h3>Najważniejsze informacje:mi</h3>
+        <ul>
+            <li>Czas trwania: 7 dni</li>
+            <li>Termin:</li>
+            <li>Nocleg</li>
+        </ul>
+        <div class="product-price">Cena: 3499 zł</div>
+        <a class="product-button" href="madera.html">Więcej informacji</a>
+    </div>
+
+</section>
+<h1>Europa</h1>
+<section class="product-section">
+    <div class="product-slider">
+        <button class="prev">&#10094;</button>
+        <div class="slider-window">
+            <div class="slider-track">
+                <img src="https://i.wakacje.pl/no-index/zdjecie/id/1564579049-1200-500.jpghttps://i.wakacje.pl/no-index/zdjecie/id/1564579049-1200-500.jpg" class="slider-image">
+                <img src="https://i.wakacje.pl/no-index/zdjecie/id/1564579050-480-238.jpg" class="slider-image">
+                <img src="https://i.wakacje.pl/no-index/zdjecie/id/1564579061-1200-800.jpg" class="slider-image">
+            </div>
+        </div>
+        <button class="next">&#10095;</button>
+    </div>
+    <div class="product-info">
+        <h2>Fuerteventura all-inclusive</h2>
+        <p>Odkryj piękno Madery z naszym pakietem premium, zawierającym zakwaterowanie, przewodnika i codzienne atrakcje.</p>
+        <h3>Najważniejsze informacje:mi</h3>
+        <ul>
+            <li>Czas trwania: 7 dni</li>
+            <li>Termin:</li>
+            <li>Nocleg</li>
+        </ul>
+        <div class="product-price">Cena: 7749 zł</div>
+        <button class="product-button">Więcej informacji</button>
+    </div>
+
+</section>
+<footer>
+  <div class="footer-container">
+      <p>&copy; 2025 Ramphastos Tour. Wszelkie prawa zastrzeżone.</p>
+      <ul class="footer-links">
+          <li><a href="privacy.html">Polityka prywatności</a></li>
+          <li><a href="terms.html">Regulamin</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+      </ul>
+  </div>
+</footer>
+<script>
+    document.querySelectorAll('.product-section').forEach(section => {
+      const sliderTrack = section.querySelector('.slider-track');
+      const images = section.querySelectorAll('.slider-image');
+      let current = 0;
+
+      function updateSlider() {
+        sliderTrack.style.transform = `translateX(-${current * 100}%)`;
+      }
+
+      section.querySelector('.next').addEventListener('click', () => {
+        current = (current + 1) % images.length;
+        updateSlider();
+      });
+
+      section.querySelector('.prev').addEventListener('click', () => {
+        current = (current - 1 + images.length) % images.length;
+        updateSlider();
+      });
+
+      updateSlider();
+    });
+</script>
+</body>
+</html>
