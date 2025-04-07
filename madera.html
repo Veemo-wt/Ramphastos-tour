@@ -28,6 +28,36 @@
   </nav>
 </header>
 <h1>Madera</h1>
+<section class="product-section">
+  <div class="product-slider">
+    <button class="prev">&#10094;</button>
+    <div class="slider-window">
+      <div class="slider-track">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/101154514.jpg?k=00804df093d6606ad19451815d39c0b0cec764cdfc1ff5a7529be5d1cf68f673&o=&hp=1" class="slider-image">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/101153381.jpg?k=4ceff6d61feb400adb150193e4576380795d415029dccc2b95218673ed76a20b&o=&hp=1" class="slider-image">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/134193894.jpg?k=e8adb98617fa3d40a4ad92c1fff2d40da0022f260024f09ab8cb04b54810bd17&o=&hp=1" class="slider-image">
+      </div>
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+  <div class="product-info">
+    <h2>Ekskluzywny wyjazd na Maderę</h2>
+    <p>Odkryj piękno Madery z naszym pakietem premium, zawierającym zakwaterowanie, przewodnika i codzienne atrakcje.</p>
+    <h3>Najważniejsze informacje</h3>
+    <ul>
+      <li><b>Czas trwania</b>: 7 dni</li>
+      <li><b>Termin</b>: 14.09.2025 - 21.09.2025 </li>
+      <li><b>W cenie</b>:<ul>
+        <li>Nocleg</li>
+        <li>Wyżywienie</li>
+        <li>Jednodniowa wycieczka fakultatywna</li>
+        <li>Atrakcje w pobliżu hotelu</li>
+      </ul></li>
+    </ul>
+    <div class="product-price">Cena: 21999PLN</div>
+  </div>
+
+</section>
 <section class="dual-section">
   <div class="text-block">
     <h2>Gdzie?</h2>
@@ -106,6 +136,28 @@
     </ul>
   </div>
 </footer>
+<script>
+  document.querySelectorAll('.product-section').forEach(section => {
+    const sliderTrack = section.querySelector('.slider-track');
+    const images = section.querySelectorAll('.slider-image');
+    let current = 0;
 
+    function updateSlider() {
+      sliderTrack.style.transform = `translateX(-${current * 100}%)`;
+    }
+
+    section.querySelector('.next').addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      updateSlider();
+    });
+
+    section.querySelector('.prev').addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      updateSlider();
+    });
+
+    updateSlider();
+  });
+</script>
 </body>
 </html>
