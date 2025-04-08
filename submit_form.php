@@ -11,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'timestamp' => date('Y-m-d H:i:s')
     ];
 
-    $dir = 'messages';
+    define('ROOT_PATH', '/');
+    $dir = ROOT_PATH . 'home/ramphastosftp/jsonmessages';
     if (!file_exists($dir)) {
         mkdir($dir, 0777, true);
     }
@@ -21,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     echo "<script>
       alert('Oczekujemy 6 z niecierpliwością.\\n\\nPS. Ten forumlarz tak naprawdę nie działa.');
+//      alert(get_current_user());
       window.location.href = 'contact.html';
     </script>";
 } else {
