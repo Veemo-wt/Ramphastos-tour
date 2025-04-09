@@ -522,3 +522,12 @@ footer {
 .icon{
     width: 40px;
 }
+ul{
+    list-style-type: none;
+}
+.product-info ul li{
+    margin: 0.2rem 0;
+}
+.product-info ul {
+    padding: 0;
+}
