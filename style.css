@@ -495,3 +495,26 @@ footer {
 .flg-btn:hover{
     background-color: var(--secondary);
 }
+.center-block {
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--accent-mono);
+  border-radius: 3rem;
+  box-shadow: var(--accent) 0px 0px 15px 0px;
+  max-width: 1200px;
+}
+
+.table-wrapper {
+    width: 100%;
+    max-width: 1140px;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrapper td {
+    padding: 1rem 1.25rem;
+    text-align: center;
+}
