@@ -59,7 +59,7 @@ nav ul li a {
 nav ul li a:hover {
     background-color: var(--accent);
     box-shadow: var(--accent) 5px 0 15px 0;
-    padding: 1rem 2rem;
+    padding: 1.1rem 2.2rem;
 }
 
 .nav-image {
@@ -517,4 +517,8 @@ footer {
 .table-wrapper td {
     padding: 1rem 1.25rem;
     text-align: center;
+}
+
+.icon{
+    width: 40px;
 }
