@@ -11,8 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'timestamp' => date('Y-m-d H:i:s')
     ];
 
-    define('ROOT_PATH', '/');
-    $dir = ROOT_PATH . 'home/ramphastosftp/jsonmessages';
+    $dir = 'messages';
     if (!file_exists($dir)) {
         mkdir($dir, 0777, true);
     }
