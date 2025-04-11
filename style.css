@@ -66,12 +66,12 @@ nav ul li a:hover {
 .nav-image {
     height: 60px;
     width: 60px;
-    object-fit: cover;
+    object-fit: scale-down;
     object-position: center;
-    overflow: hidden;
+    overflow: visible;
     clip-path: inset(10% 0 10% 0);
     align-self: center;
-    margin: 0.3rem 1rem 0.3rem 2rem;
+    padding: 0.3rem 1rem 0.3rem 2rem;
 }
 
 h1 {
