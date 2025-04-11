@@ -70,11 +70,8 @@ nav ul li a:hover {
     object-position: center;
     overflow: hidden;
     clip-path: inset(10% 0 10% 0);
-    margin-left: 2rem;
-    margin-right: 1rem;
     align-self: center;
-    margin-bottom: 0.3rem;
-    margin-top: 0.3rem;
+    margin: 0.3rem 1rem 0.3rem 2rem;
 }
 
 h1 {
@@ -537,4 +534,28 @@ ul{
 }
 .distance{
     color: #969696;
+}
+.div-horizontal-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pad-add{
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+}
+#method
+{
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    border-radius: 3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: var(--accent) 0px 0px 15px 0px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }

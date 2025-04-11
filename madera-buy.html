@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ramphastos Tour</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&"/>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="logo.png" class="nav-image" alt="RamphastosTour logo, toucan icon">
+      </a>
+      <h2 class="nav-title">Ramphastos Tour</h2>
+    </div>
+    <div class="nav-center">
+      <ul>
+        <li><a href="index.html">Strona Główna</a></li>
+        <li><a href="about.html">O nas</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="nav-right"></div>
+  </nav>
+</header>
+<section class="contact-section">
+  <h1 class="center">Płatność za wycieczkę na Maderę</h1>
+  <div class="dual-section">
+    <!-- DANE UCZESTNIKA -->
+    <div class="text-block div-horizontal-center">
+      <h2 class="pad-add">Szczegóły uczestnika</h2>
+      <form class="contact-form">
+        <label for="name">Imię i nazwisko</label>
+        <input type="text" id="name" name="name" placeholder="Jan Kowalski" required>
+
+        <label for="email">Adres e-mail</label>
+        <input type="email" id="email" name="email" placeholder="jan.kowalski@example.com" required>
+
+        <label for="phone">Telefon kontaktowy</label>
+        <input type="tel" id="phone" name="phone" placeholder="+48 123 456 789" pattern="\+?\d{9,15}" required>
+      </form>
+    </div>
+
+    <!-- METODA PŁATNOŚCI -->
+    <div class="text-block">
+      <h2>Dane płatności</h2>
+      <form class="contact-form">
+        <label for="method">Metoda płatności</label>
+        <select id="method" name="method" required>
+          <option value="card">Karta płatnicza</option>
+          <option value="blik">BLIK</option>
+          <option value="przelew">Przelew online</option>
+        </select>
+
+        <label for="card">Numer karty</label>
+        <input type="text" id="card" name="card" placeholder="1234 5678 9012 3456" pattern="\d{4} \d{4} \d{4} \d{4}" required>
+
+        <label for="expiry">Data ważności</label>
+        <input type="text" id="expiry" name="expiry" placeholder="MM/RR" pattern="(0[1-9]|1[0-2])\/\d{2}" required>
+
+        <label for="cvc">Kod CVC</label>
+        <input type="text" id="cvc" name="cvc" placeholder="123" pattern="\d{3}" required>
+
+        <p class="product-price center">Cena: 24999PLN</p>
+        <button type="submit" class="product-button">Zapłać teraz</button>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-container">
+    <p>&copy; 2025 Ramphastos Tour. Wszelkie prawa zastrzeżone.</p>
+    <p>Strona internetowa to atrapa wykonana jako projekt na geografie.</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Polityka prywatności</a></li>
+      <li><a href="terms.html">Regulamin</a></li>
+      <li><a href="contact.html">Kontakt</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.contact-form').forEach(form => {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const button = this.querySelector('button[type="submit"]');
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+
+      button.disabled = true;
+      const originalText = button.textContent;
+      button.textContent = 'Przetwarzanie...';
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        alert('Brak wolnych miejsc na wycieczkę na Maderę.');
+        button.disabled = false;
+      }, 2000);
+    });
+  });
+</script>
+</body>
+</html>
