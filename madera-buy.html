@@ -30,9 +30,10 @@
 <section class="contact-section">
   <h1 class="center">Płatność za wycieczkę na Maderę</h1>
   <div class="dual-section">
+
     <!-- DANE UCZESTNIKA -->
     <div class="text-block div-horizontal-center">
-      <h2 class="pad-add">Szczegóły uczestnika</h2>
+      <h2 class>Szczegóły uczestnika</h2>
       <form class="contact-form">
         <label for="name">Imię i nazwisko</label>
         <input type="text" id="name" name="name" placeholder="Jan Kowalski" required>
@@ -56,14 +57,17 @@
           <option value="przelew">Przelew online</option>
         </select>
 
-        <label for="card">Numer karty</label>
-        <input type="text" id="card" name="card" placeholder="1234 5678 9012 3456" pattern="\d{4} \d{4} \d{4} \d{4}" required>
+        <label for="card" id="card-label" style="display:none;">Numer karty</label>
+        <input type="text" id="card" name="card" placeholder="1234 5678 9012 3456" pattern="\d{4} \d{4} \d{4} \d{4}" style="display:none;">
 
-        <label for="expiry">Data ważności</label>
-        <input type="text" id="expiry" name="expiry" placeholder="MM/RR" pattern="(0[1-9]|1[0-2])\/\d{2}" required>
+        <label for="expiry" id="expiry-label" style="display:none;">Data ważności</label>
+        <input type="text" id="expiry" name="expiry" placeholder="MM/RR" pattern="(0[1-9]|1[0-2])\/\d{2}" style="display:none;">
 
-        <label for="cvc">Kod CVC</label>
-        <input type="text" id="cvc" name="cvc" placeholder="123" pattern="\d{3}" required>
+        <label for="cvc" id="cvc-label" style="display:none;">Kod CVC</label>
+        <input type="text" id="cvc" name="cvc" placeholder="123" pattern="\d{3}" style="display:none;">
+
+        <label for="blik-code" id="blik-label" style="display:none;">Kod BLIK</label>
+        <input type="text" id="blik-code" name="blik-code" placeholder="123456" pattern="\d{6}" style="display:none;">
 
         <p class="product-price center">Cena: 24999PLN</p>
         <button type="submit" class="product-button">Zapłać teraz</button>
@@ -95,15 +99,80 @@
 
       button.disabled = true;
       const originalText = button.textContent;
-      button.textContent = 'Przetwarzanie...';
+
+      let dotCount = 1;
+      button.textContent = 'Przetwarzanie.';
+      const interval = setInterval(() => {
+        dotCount = (dotCount % 3) + 1;
+        button.textContent = 'Przetwarzanie' + '.'.repeat(dotCount);
+      }, 500);
 
       setTimeout(() => {
+        clearInterval(interval);
         button.textContent = originalText;
         alert('Brak wolnych miejsc na wycieczkę na Maderę.');
         button.disabled = false;
-      }, 2000);
+      }, 3500);
     });
   });
+
+  const methodSelect = document.getElementById('method');
+  const cardField = document.getElementById('card');
+  const expiryField = document.getElementById('expiry');
+  const cvcField = document.getElementById('cvc');
+  const blikField = document.getElementById('blik-code');
+  const blikLabel = document.getElementById('blik-label');
+  const cardLabel = document.getElementById('card-label');
+  const expiryLabel = document.getElementById('expiry-label');
+  const cvcLabel = document.getElementById('cvc-label');
+
+  function updateRequiredFields() {
+    const method = methodSelect.value;
+
+    if (method === 'card') {
+      cardField.style.display = 'block';
+      expiryField.style.display = 'block';
+      cvcField.style.display = 'block';
+      cardLabel.style.display = 'block';
+      expiryLabel.style.display = 'block';
+      cvcLabel.style.display = 'block';
+      blikField.style.display = 'none';
+      blikLabel.style.display = 'none';
+      cardField.required = true;
+      expiryField.required = true;
+      cvcField.required = true;
+      blikField.required = false;
+    } else if (method === 'blik') {
+      cardField.style.display = 'none';
+      expiryField.style.display = 'none';
+      cvcField.style.display = 'none';
+      cardLabel.style.display = 'none';
+      expiryLabel.style.display = 'none';
+      cvcLabel.style.display = 'none';
+      blikField.style.display = 'block';
+      blikLabel.style.display = 'block';
+      cardField.required = false;
+      expiryField.required = false;
+      cvcField.required = false;
+      blikField.required = true;
+    } else {
+      cardField.style.display = 'none';
+      expiryField.style.display = 'none';
+      cvcField.style.display = 'none';
+      cardLabel.style.display = 'none';
+      expiryLabel.style.display = 'none';
+      cvcLabel.style.display = 'none';
+      blikField.style.display = 'none';
+      blikLabel.style.display = 'none';
+      cardField.required = false;
+      expiryField.required = false;
+      cvcField.required = false;
+      blikField.required = false;
+    }
+  }
+
+  methodSelect.addEventListener('change', updateRequiredFields);
+  updateRequiredFields();
 </script>
 </body>
 </html>
