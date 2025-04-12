@@ -559,3 +559,8 @@ ul{
     text-align: center;
     text-decoration: none;
 }
+.map{
+    border:none;
+    border-radius: 3rem;
+    box-shadow: var(--accent) 0px 0px 15px 0px;
+}
