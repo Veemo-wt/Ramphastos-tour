@@ -111,7 +111,29 @@
       setTimeout(() => {
         clearInterval(interval);
         button.textContent = originalText;
-        alert('Brak wolnych miejsc na wycieczkę na Maderę.');
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '50%';
+        modal.style.left = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+        modal.style.backgroundColor = '#ffffff';
+        modal.style.border = '2px solid #007cc3';
+        modal.style.borderRadius = '2rem';
+        modal.style.boxShadow = '0 0 15px rgba(0, 124, 195, 0.5)';
+        modal.style.padding = '2rem';
+        modal.style.zIndex = '9999';
+        modal.style.textAlign = 'center';
+        modal.style.maxWidth = '90%';
+        modal.innerHTML = `
+          <h2 style="margin-bottom: 1rem; color: #007cc3;">Brak wolnych miejsc</h2>
+          <p>Przykro nam, ale obecnie nie ma wolnych miejsc na wycieczkę na Maderę.</p>
+          <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
+        `;
+
+        const closeButton = modal.querySelector('button');
+        closeButton.addEventListener('click', () => modal.remove());
+
+        document.body.appendChild(modal);
         button.disabled = false;
       }, 3500);
     });
