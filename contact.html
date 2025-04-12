@@ -56,6 +56,26 @@
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    const formData = new FormData(this);
+
+    fetch('submit_form.php', {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => {
+              if (response.ok) {
+                showModal("Wiadomość wysłana", "Dziękujemy za kontakt. Odpowiemy tak szybko, jak to możliwe.");
+                this.reset();
+              } else {
+                showModal("Błąd", "Wystąpił problem z wysyłką formularza.");
+              }
+            })
+            .catch(() => {
+              showModal("Błąd", "Nie udało się połączyć z serwerem.");
+            });
+  });
+
+  function showModal(title, message) {
     const modal = document.createElement('div');
     modal.style.position = 'fixed';
     modal.style.top = '50%';
@@ -70,19 +90,14 @@
     modal.style.textAlign = 'center';
     modal.style.maxWidth = '90%';
     modal.innerHTML = `
-      <h2 style="margin-bottom: 1rem; color: #007cc3;">Wiadomość wysłana</h2>
-      <p>Dziękujemy za kontakt. Odpowiemy tak szybko, jak to możliwe.</p>
+      <h2 style="margin-bottom: 1rem; color: #007cc3;">${title}</h2>
+      <p>${message}</p>
       <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
     `;
-
     const closeButton = modal.querySelector('button');
     closeButton.addEventListener('click', () => modal.remove());
-
     document.body.appendChild(modal);
-
-    // Opcjonalne czyszczenie formularza:
-    this.reset();
-  });
+  }
 </script>
 </body>
 </html>
