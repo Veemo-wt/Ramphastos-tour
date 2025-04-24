@@ -30,7 +30,7 @@
 <section class="contact-section">
   <h1 class="center">Płatność za wycieczkę na Maderę</h1>
   <div class="dual-section">
-    <form class="contact-form dual-form">
+    <form class="contact-form dual-form" id="paymentForm">
     <!-- DANE UCZESTNIKA -->
     <div class="text-block div-horizontal-center">
       <fieldset>
@@ -88,70 +88,6 @@
   </div>
 </footer>
 <script>
-  form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  const button = this.querySelector('button[type="submit"]');
-
-  if (!this.checkValidity()) {
-    this.reportValidity();
-    return;
-  }
-
-  button.disabled = true;
-  const originalText = button.textContent;
-
-  let dotCount = 1;
-  button.textContent = 'Przetwarzanie.';
-  const interval = setInterval(() => {
-    dotCount = (dotCount % 3) + 1;
-    button.textContent = 'Przetwarzanie' + '.'.repeat(dotCount);
-  }, 500);
-
-  fetch('submit.php', {
-    method: 'POST',
-    body: formData
-  })
-    .then(response => response.json())
-    .then(data => {
-      clearInterval(interval);
-      button.textContent = originalText;
-
-      const modal = document.createElement('div');
-      modal.style.position = 'fixed';
-      modal.style.top = '50%';
-      modal.style.left = '50%';
-      modal.style.transform = 'translate(-50%, -50%)';
-      modal.style.backgroundColor = '#ffffff';
-      modal.style.border = '2px solid #007cc3';
-      modal.style.borderRadius = '2rem';
-      modal.style.boxShadow = '0 0 15px rgba(0, 124, 195, 0.5)';
-      modal.style.padding = '2rem';
-      modal.style.zIndex = '9999';
-      modal.style.textAlign = 'center';
-      modal.style.maxWidth = '90%';
-
-      modal.innerHTML = `
-        <h2 style="margin-bottom: 1rem; color: #007cc3;">${data.status === 'success' ? 'Dziękujemy!' : 'Błąd'}</h2>
-        <p>${data.message}</p>
-        <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
-      `;
-
-      modal.querySelector('button').addEventListener('click', () => modal.remove());
-      document.body.appendChild(modal);
-
-      button.disabled = false;
-    })
-    .catch(error => {
-      clearInterval(interval);
-      button.textContent = originalText;
-      alert("Wystąpił błąd podczas przesyłania danych.");
-      button.disabled = false;
-    });
-  });
-
-
   const methodSelect = document.getElementById('method');
   const cardField = document.getElementById('card');
   const expiryField = document.getElementById('expiry');
@@ -161,6 +97,7 @@
   const cardLabel = document.getElementById('card-label');
   const expiryLabel = document.getElementById('expiry-label');
   const cvcLabel = document.getElementById('cvc-label');
+  const form = document.getElementById('paymentForm');
 
   function updateRequiredFields() {
     const method = methodSelect.value;
@@ -208,6 +145,7 @@
   }
 
   methodSelect.addEventListener('change', updateRequiredFields);
+  // Execute initially to set the correct fields based on default selection
   updateRequiredFields();
 
   const phoneInput = document.getElementById('phone');
@@ -222,6 +160,76 @@
     let value = this.value.replace(/\D/g, '').substring(0, 16);
     const parts = value.match(/.{1,4}/g);
     this.value = parts ? parts.join(' ') : value;
+  });
+
+  // Form submission handler
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const button = this.querySelector('button[type="submit"]');
+
+    if (!this.checkValidity()) {
+      this.reportValidity();
+      return;
+    }
+
+    button.disabled = true;
+    const originalText = button.textContent;
+
+    let dotCount = 1;
+    button.textContent = 'Przetwarzanie.';
+    const interval = setInterval(() => {
+      dotCount = (dotCount % 3) + 1;
+      button.textContent = 'Przetwarzanie' + '.'.repeat(dotCount);
+    }, 500);
+
+    fetch('payment_form.php', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        clearInterval(interval);
+        button.textContent = originalText;
+
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '50%';
+        modal.style.left = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+        modal.style.backgroundColor = '#ffffff';
+        modal.style.border = '2px solid #007cc3';
+        modal.style.borderRadius = '2rem';
+        modal.style.boxShadow = '0 0 15px rgba(0, 124, 195, 0.5)';
+        modal.style.padding = '2rem';
+        modal.style.zIndex = '9999';
+        modal.style.textAlign = 'center';
+        modal.style.maxWidth = '90%';
+
+        modal.innerHTML = `
+          <h2 style="margin-bottom: 1rem; color: #007cc3;">${data.status === 'success' ? 'Dziękujemy!' : 'Błąd'}</h2>
+          <p>${data.message}</p>
+          <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
+        `;
+
+        modal.querySelector('button').addEventListener('click', () => modal.remove());
+        document.body.appendChild(modal);
+
+        button.disabled = false;
+      })
+      .catch(error => {
+        clearInterval(interval);
+        button.textContent = originalText;
+        console.error("Error submitting form:", error);
+        alert("Wystąpił błąd podczas przesyłania danych. Spróbuj ponownie później.");
+        button.disabled = false;
+      });
   });
 </script>
 </body>
