@@ -626,3 +626,169 @@ label {
 #card-label, #expiry-label, #cvc-label, #blik-label {
     display: none;
 }
+.excursion-section {
+    margin: 3rem auto;
+    max-width: 1200px;
+    background-color: #fafcfd;
+    border-radius: 1.5rem;
+    padding: 2rem;
+}
+
+.highlight-title {
+    color: var(--accent);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tour-intro {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.tour-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--background);
+    padding: 1rem;
+    border-radius: 1rem;
+    min-width: 120px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-item .material-symbols-outlined {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.timeline-section {
+    margin-bottom: 2.5rem;
+}
+
+.timeline-section h4 {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.timeline-list {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.timeline-list li {
+    display: flex;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-list li:before {
+    content: '';
+    position: absolute;
+    left: 5.5rem;
+    top: 0;
+    bottom: -1.5rem;
+    width: 2px;
+}
+
+.timeline-list li:last-child:before {
+    display: none;
+}
+
+.time-block {
+    min-width: 5.5rem;
+    padding-top: 0.5rem;
+}
+
+.activity-block {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--background);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.activity-block .material-symbols-outlined {
+    font-size: 1.8rem;
+    color: var(--primary);
+    background-color: rgba(0, 124, 195, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+}
+
+.activity-block h5 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.activity-block p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.tour-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: var(--background);
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tour-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.price-label {
+    font-weight: bold;
+}
+
+.included {
+    background-color: #2cb67d;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+.tour-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.tour-cta .product-button {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+}
+#attractions{
+    max-width: 1100px;
+}
