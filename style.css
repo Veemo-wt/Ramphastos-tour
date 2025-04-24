@@ -702,7 +702,6 @@ label {
     top: 0;
     bottom: -1.5rem;
     width: 2px;
-    background-color: #e0e0e0;
 }
 
 .timeline-list li:last-child:before {
