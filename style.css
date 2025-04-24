@@ -627,10 +627,11 @@ label {
     display: none;
 }
 .excursion-section {
+    margin: 3rem auto;
+    max-width: 1200px;
     background-color: #fafcfd;
     border-radius: 1.5rem;
     padding: 2rem;
-    margin: 3rem 0;
 }
 
 .highlight-title {
