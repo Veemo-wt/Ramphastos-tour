@@ -30,7 +30,7 @@
 <section class="contact-section">
   <h1 class="center">Płatność za wycieczkę na Maderę</h1>
   <div class="dual-section">
-    <form class="contact-form dual-form">
+    <form class="contact-form dual-form" id="paymentForm">
     <!-- DANE UCZESTNIKA -->
     <div class="text-block div-horizontal-center">
       <fieldset>
@@ -120,6 +120,7 @@
   }
 
   methodSelect.addEventListener('change', updateRequiredFields);
+  // Execute initially to set the correct fields based on default selection
   updateRequiredFields();
 
   // Formatowanie numeru telefonu
@@ -194,7 +195,6 @@
         clearInterval(interval);
         button.textContent = originalText;
         //alert("Wystąpił błąd podczas przesyłania danych.");
-        alert(error);
         button.disabled = false;
       });
   });
