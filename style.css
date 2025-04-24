@@ -7,7 +7,7 @@
 --accent-mono: #f3f3f3;
 }
 
-h3,h2{
+h3,h2, h4{
 margin: 5px
 }
 
@@ -443,7 +443,7 @@ margin: 3rem auto;
 padding: 2rem;
 border-radius: 2rem;
 box-shadow: var(--accent) 0 0 15px 0;
-align-items: center; /* Add this to vertically center */
+align-items: center;
 }
 .pfp-img
 {
@@ -455,21 +455,21 @@ box-shadow: var(--accent) 0 0 15px 0;
 }
 .pfp {
 display: flex;
-align-items: center; /* Add this to ensure the image is centered */
+align-items: center;
 }
 .info-block{
 display: flex;
 flex-direction: column;
-/* align-items: center; <-- Remove this line */
-justify-content: space-between;
-margin: 3rem auto; /* Keep margin auto for centering */
-max-width: 1200px;
-width: 100%; /* Ensure it tries to take full width up to max-width */
-background: var(--accent-mono);
+align-items: center;
+    justify-content: space-between;
+margin: 3rem auto;
+    max-width: 1200px;
+width: 100%;
+    background: var(--accent-mono);
 padding: 2rem;
 border-radius: 3rem;
 box-shadow: var(--accent) 0 0 15px 0;
-box-sizing: border-box; /* Add box-sizing */
+box-sizing: border-box;
 }
 
 .to, .from {
@@ -707,13 +707,9 @@ position: relative;
 content: '';
 position: absolute;
 left: 5.5rem;
-top: 0;
+    top: 0;
 bottom: -1.5rem;
-width: 2px;
-}
-
-.timeline-list li:last-child:before {
-display: none;
+    width: 2px;
 }
 
 .time-block {
@@ -843,5 +839,45 @@ margin-bottom: 0.75rem;
 .ciekawostka-item p {
 font-size: 1rem;
 line-height: 1.5;
+}
+
+
+.daily-plan .day-block {
+  min-width: 5.5rem;
+  padding-top: 0.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-align: right;
+  padding-right: 1rem;
+}
+
+
+.daily-plan li:before {
+  content: '';
+  position: absolute;
+  left: 5.5rem;
+  top: 0;
+  bottom: -1.5rem;
+  width: 2px;
+}
+
+.daily-plan li:last-child:before {
+  display: none;
+}
+
+.daily-plan li .day-block:empty + .activity-block {
+  margin-left: 0;
+}
+.daily-plan li .day-block:empty ~ li:before {
+}
+
+
+.culinary-plan-section {
+    max-width: 1200px;
+    margin: 4rem auto 3rem auto;
+    background-color: var(--accent-mono);
+    box-shadow: var(--accent) 0 0 15px 0;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
