@@ -443,6 +443,7 @@ footer {
     padding: 2rem;
     border-radius: 2rem;
     box-shadow: var(--accent) 0 0 15px 0;
+    align-items: center; /* Add this to vertically center */
 }
 .pfp-img
 {
@@ -451,6 +452,10 @@ footer {
     height: 150px;
     margin-right: 2rem;
     box-shadow: var(--accent) 0 0 15px 0;
+}
+.pfp {
+    display: flex;
+    align-items: center; /* Add this to ensure the image is centered */
 }
 .info-block{
     display: flex;
