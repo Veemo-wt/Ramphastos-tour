@@ -789,3 +789,6 @@ label {
     font-size: 1.2rem;
     padding: 1rem 2.5rem;
 }
+#attractions{
+    max-width: 1100px;
+}
