@@ -9,6 +9,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cvc = $_POST["cvc"] ?? '';
     $blik = $_POST["blik-code"] ?? '';
 
+    // Check if we're already at capacity (hard-coded limit of 3 registrations)
+    $dir = 'payments';
+    if (!file_exists($dir)) {
+        mkdir($dir, 0777, true);
+    }
+    
+    $files = glob($dir . '/*.json');
+    if (count($files) >= 3) {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'no_seats',
+            'message' => 'Przepraszamy, ale wszystkie miejsca na tę wycieczkę zostały już zarezerwowane.'
+        ]);
+        exit;
+    }
+
     $data = [
         'name' => $name,
         'email' => $email,
@@ -20,11 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'blik_code' => $method === 'blik' ? $blik : '',
         'timestamp' => date('Y-m-d H:i:s')
     ];
-
-    $dir = 'payments';
-    if (!file_exists($dir)) {
-        mkdir($dir, 0777, true);
-    }
 
     $filename = $dir . '/' . date('Y-m-d_H-i-s') . '_' . preg_replace('/[^a-zA-Z0-9]/', '', $name) . '.json';
     file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));

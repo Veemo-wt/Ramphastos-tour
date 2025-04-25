@@ -181,11 +181,21 @@
         modal.style.textAlign = 'center';
         modal.style.maxWidth = '90%';
 
-        modal.innerHTML = `
-          <h2 style="margin-bottom: 1rem; color: #007cc3;">${data.status === 'success' ? 'Dziękujemy!' : 'Błąd'}</h2>
-          <p>${data.message}</p>
-          <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
-        `;
+        // Check if the data status is 'no_seats' to show a special message about no available seats
+        if (data.status === 'no_seats') {
+          modal.innerHTML = `
+            <h2 style="margin-bottom: 1rem; color: #dc3545;">Brak miejsc</h2>
+            <p>Przepraszamy, ale wszystkie miejsca na tę wycieczkę zostały już zarezerwowane.</p>
+            <p>Prosimy o sprawdzenie innych terminów lub skontaktowanie się z nami.</p>
+            <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
+          `;
+        } else {
+          modal.innerHTML = `
+            <h2 style="margin-bottom: 1rem; color: #007cc3;">${data.status === 'success' ? 'Dziękujemy!' : 'Błąd'}</h2>
+            <p>${data.message}</p>
+            <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
+          `;
+        }
 
         modal.querySelector('button').addEventListener('click', () => modal.remove());
         document.body.appendChild(modal);
@@ -194,7 +204,33 @@
       .catch(error => {
         clearInterval(interval);
         button.textContent = originalText;
-        //alert("Wystąpił błąd podczas przesyłania danych.");
+        console.error("Error submitting form:", error);
+        
+        // Show a nicer error modal instead of an alert
+        const errorModal = document.createElement('div');
+        errorModal.style.position = 'fixed';
+        errorModal.style.top = '50%';
+        errorModal.style.left = '50%';
+        errorModal.style.transform = 'translate(-50%, -50%)';
+        errorModal.style.backgroundColor = '#ffffff';
+        errorModal.style.border = '2px solid #dc3545';
+        errorModal.style.borderRadius = '2rem';
+        errorModal.style.boxShadow = '0 0 15px rgba(220, 53, 69, 0.5)';
+        errorModal.style.padding = '2rem';
+        errorModal.style.zIndex = '9999';
+        errorModal.style.textAlign = 'center';
+        errorModal.style.maxWidth = '90%';
+
+        errorModal.innerHTML = `
+          <h2 style="margin-bottom: 1rem; color: #dc3545;">Błąd</h2>
+          <p>Wystąpił problem podczas przetwarzania Twojego zamówienia.</p>
+          <p>Sprawdź połączenie internetowe i spróbuj ponownie za chwilę.</p>
+          <button style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: none; border-radius: 1rem; background-color: #007cc3; color: white; font-size: 1rem; cursor: pointer;">Zamknij</button>
+        `;
+
+        errorModal.querySelector('button').addEventListener('click', () => errorModal.remove());
+        document.body.appendChild(errorModal);
+        
         button.disabled = false;
       });
   });
