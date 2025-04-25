@@ -912,8 +912,6 @@ label {
     margin-left: 0;
 }
 
-.daily-plan li .day-block:empty~li:before {}
-
 
 .culinary-plan-section {
     max-width: 1200px;
