@@ -941,12 +941,11 @@ label {
 .button-container{
     overflow: hidden;
     display: flex;
-    width: auto;
-    display: inline;
+    width: 1200px;
+    flex-direction: row;
     padding: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5em;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
 }
 
 .navi-button {
@@ -963,4 +962,8 @@ label {
     text-align: center;
     text-decoration: none;
     margin: auto;
+}
+.navi-button:hover {
+    background-color: var(--accent);
+
 }
