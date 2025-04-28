@@ -967,3 +967,127 @@ label {
     background-color: var(--accent);
 
 }
+
+/* Styles for the new Image Gallery Section */
+#image-gallery {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--accent-mono);
+    border-radius: 3rem;
+    box-shadow: var(--accent) 0 0 15px 0;
+    box-sizing: border-box;
+}
+
+#image-gallery h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Creates a responsive grid */
+    gap: 1.5rem;
+}
+
+.gallery-grid figure {
+    margin: 0;
+    background-color: var(--background);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px; /* Fixed height for uniform look */
+    object-fit: cover; /* Crop images nicely */
+    display: block;
+}
+
+.gallery-grid figcaption {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text);
+    background-color: var(--background); /* Ensure background matches figure */
+    flex-grow: 1; /* Allow caption to take remaining space if needed */
+}
+
+/* Lightbox Styles */
+#lightbox-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.85); /* Black w/ opacity */
+    /* Use flexbox to center content, but allow vertical stacking */
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box;
+}
+
+#lightbox-image {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80vh; /* Adjust max height to leave space for info */
+    border-radius: 5px;
+    animation: zoom 0.3s ease-in-out; /* Add a little zoom effect */
+}
+
+/* Styles for the lightbox info container */
+#lightbox-info {
+    color: #f1f1f1; /* Light text color */
+    text-align: center;
+    padding: 15px 10px 5px 10px; /* Add padding top/bottom */
+    max-width: 80%; /* Limit width */
+    margin-top: 10px; /* Space between image and text */
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+#lightbox-info p {
+    margin: 5px 0; /* Adjust paragraph margin */
+}
+
+.lightbox-source {
+    font-size: 0.8rem; /* Smaller font size for source */
+    opacity: 0.7; /* Make source less prominent */
+    word-break: break-all; /* Break long URLs */
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8);}
+    to {transform: scale(1);}
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1002; /* Ensure close button is above image if overlap occurs */
+}
+
+#lightbox-close:hover,
+#lightbox-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
