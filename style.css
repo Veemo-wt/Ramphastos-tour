@@ -1125,3 +1125,10 @@ label {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+.no-underline {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
