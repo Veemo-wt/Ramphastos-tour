@@ -92,6 +92,10 @@ h1 {
     justify-content: center;
     /* Add scroll margin for sections targeted by nav */
     scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
+    max-width: 1200px; /* Ensure max width */
+    box-sizing: border-box;
+    margin-left: auto; /* Center the section */
+    margin-right: auto; /* Center the section */
 }
 
 .product-info {
@@ -100,6 +104,7 @@ h1 {
     background-color: var(--accent-mono);
     padding: 20px;
     border-radius: 3rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,6 +114,7 @@ h1 {
 .product-image {
     flex: 2 1 80%;
     max-width: 700px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -155,10 +161,10 @@ h1 {
     width: 100%;
     max-width: 700px;
     border: 2px solid var(--accent);
-    border-radius: 3rem;
+    border-radius: 3rem; /* Keep radius on the main container */
     box-shadow: var(--accent) 0 0 15px 0;
     background-color: var(--background);
-    overflow: hidden;
+    overflow: hidden; /* Ensures clipping */
     padding: 0;
     box-sizing: border-box;
 }
@@ -173,8 +179,8 @@ h1 {
     padding: 0;
     box-sizing: border-box;
     background-color: var(--background);
-    border-radius: inherit;
     height: 100%;
+    transform: translateZ(0);
 }
 
 .slider-track {
@@ -190,7 +196,7 @@ h1 {
     flex-shrink: 0;
     transition: transform 0.5s ease-in-out;
     position: static;
-    height: auto;
+    height: 100%;
     box-sizing: border-box;
     object-fit: cover;
 }
@@ -233,7 +239,7 @@ footer {
 }
 
 .footer-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -361,6 +367,7 @@ footer {
     max-width: 1200px;
     padding: 1rem;
     flex-direction: row;
+    box-sizing: border-box;
     /* Add scroll margin for sections targeted by nav */
     scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
@@ -382,8 +389,8 @@ footer {
 }
 
 .image-block {
-    flex: 1 1 66%;
-    max-width: 66%;
+    flex: 1 1 67%;
+    max-width: 67%;
 }
 
 .image-block img {
@@ -401,6 +408,7 @@ footer {
     gap: 2rem;
     margin: 3rem auto;
     max-width: 1200px;
+    box-sizing: border-box;
     padding: 1rem;
 }
 
@@ -540,11 +548,13 @@ footer {
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     max-width: 1200px;
+    box-sizing: border-box;
 }
 
 .table-wrapper {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1200px;
+    box-sizing: border-box;
 }
 
 .table-wrapper table {
@@ -685,6 +695,7 @@ label {
 .excursion-section {
     margin: 3rem auto;
     max-width: 1200px;
+    box-sizing: border-box;
     background-color: #fafcfd;
     border-radius: 1.5rem;
     padding: 2rem;
@@ -845,7 +856,10 @@ label {
 }
 
 #attractions {
-    max-width: 1100px;
+    max-width: 1200px; /* Update max width */
+    box-sizing: border-box;
+    margin-left: auto; /* Ensure centering */
+    margin-right: auto; /* Ensure centering */
 }
 
 .highlight-box {
@@ -1125,7 +1139,6 @@ label {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 .no-underline {
     text-decoration: none;
