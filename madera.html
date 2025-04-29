@@ -85,7 +85,7 @@
   </div>
 
 </section>
-<section id="page-navigator" class="interactive-section">
+<section id="page-navigator" class="interactive-section sticky">
   <div class="button-container">
     <a class="navi-button" href="#flight-info">Transport</a>
     <a class="navi-button" href="#nocleg">Hotel</a>
@@ -1177,6 +1177,22 @@
     }
   });
 
+  const navSection = document.getElementById('page-navigator'); // The parent section to make sticky
+  // const buttonContainer = navSection.querySelector('.button-container'); // No longer the direct target for 'stuck'
+
+  // Calculate the offset based on the parent section's top position relative to the document
+  const stickyOffset = navSection.offsetTop;
+
+  window.addEventListener('scroll', () => {
+    // Check scroll position against the original top position of the parent section
+    if (window.scrollY >= stickyOffset) {
+      // Apply 'stuck' class to the parent section
+      navSection.classList.add('stuck');
+    } else {
+      // Remove 'stuck' class from the parent section
+      navSection.classList.remove('stuck');
+    }
+  });
 </script>
 </body>
 </html>

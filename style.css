@@ -930,22 +930,50 @@ label {
     justify-content: space-between;
     margin: 3rem auto;
     max-width: 1200px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, max-width 0.3s ease;
     width: 100%;
+    padding: 0;
+}
+
+#page-navigator.stuck {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    background: var(--background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0;
+}
+
+.button-container{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    flex-direction: row;
+    padding: 12px;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    margin: 0 auto;
     background: var(--accent-mono);
-    padding: 5px;
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     box-sizing: border-box;
 }
 
-.button-container{
-    overflow: hidden;
-    display: flex;
-    width: 1200px;
-    flex-direction: row;
-    padding: 12px;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
+#page-navigator.stuck .button-container {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 1200px;
+    width: 100%;
+    padding: 8px 1rem;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
 }
 
 .navi-button {
@@ -956,19 +984,18 @@ label {
     border-radius: 3rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: var(--accent) 0 0 15px 0px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--accent) 0 0 10px 0px;
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    margin: auto;
+    white-space: nowrap;
 }
 .navi-button:hover {
     background-color: var(--accent);
-
+    box-shadow: var(--accent) 0 0 15px 2px;
 }
 
-/* Styles for the new Image Gallery Section */
 #image-gallery {
     max-width: 1200px;
     margin: 3rem auto;
@@ -988,7 +1015,7 @@ label {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Creates a responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
@@ -1004,8 +1031,8 @@ label {
 
 .gallery-grid img {
     width: 100%;
-    height: 200px; /* Fixed height for uniform look */
-    object-fit: cover; /* Crop images nicely */
+    height: 200px;
+    object-fit: cover;
     display: block;
 }
 
@@ -1014,26 +1041,24 @@ label {
     text-align: center;
     font-size: 0.95rem;
     color: var(--text);
-    background-color: var(--background); /* Ensure background matches figure */
-    flex-grow: 1; /* Allow caption to take remaining space if needed */
+    background-color: var(--background);
+    flex-grow: 1;
 }
 
-/* Lightbox Styles */
 #lightbox-overlay {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1001; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.85); /* Black w/ opacity */
-    /* Use flexbox to center content, but allow vertical stacking */
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85);
     flex-direction: column;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    padding: 20px; /* Add some padding */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -1041,30 +1066,29 @@ label {
     display: block;
     margin: auto;
     max-width: 90%;
-    max-height: 80vh; /* Adjust max height to leave space for info */
+    max-height: 80vh;
     border-radius: 5px;
-    animation: zoom 0.3s ease-in-out; /* Add a little zoom effect */
+    animation: zoom 0.3s ease-in-out;
 }
 
-/* Styles for the lightbox info container */
 #lightbox-info {
-    color: #f1f1f1; /* Light text color */
+    color: #f1f1f1;
     text-align: center;
-    padding: 15px 10px 5px 10px; /* Add padding top/bottom */
-    max-width: 80%; /* Limit width */
-    margin-top: 10px; /* Space between image and text */
+    padding: 15px 10px 5px 10px;
+    max-width: 80%;
+    margin-top: 10px;
     font-size: 0.95rem;
     line-height: 1.4;
 }
 
 #lightbox-info p {
-    margin: 5px 0; /* Adjust paragraph margin */
+    margin: 5px 0;
 }
 
 .lightbox-source {
-    font-size: 0.8rem; /* Smaller font size for source */
-    opacity: 0.7; /* Make source less prominent */
-    word-break: break-all; /* Break long URLs */
+    font-size: 0.8rem;
+    opacity: 0.7;
+    word-break: break-all;
 }
 
 @keyframes zoom {
@@ -1081,7 +1105,7 @@ label {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
-    z-index: 1002; /* Ensure close button is above image if overlap occurs */
+    z-index: 1002;
 }
 
 #lightbox-close:hover,
