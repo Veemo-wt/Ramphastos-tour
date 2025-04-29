@@ -90,6 +90,8 @@ h1 {
     gap: 2rem;
     align-items: stretch;
     justify-content: center;
+    /* Add scroll margin for sections targeted by nav */
+    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
 
 .product-info {
@@ -359,6 +361,8 @@ footer {
     max-width: 1200px;
     padding: 1rem;
     flex-direction: row;
+    /* Add scroll margin for sections targeted by nav */
+    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
 
 .dual-section.reverse {
@@ -485,6 +489,8 @@ footer {
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     box-sizing: border-box;
+    /* Add scroll margin for sections targeted by nav */
+    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
 
 .to,
@@ -682,6 +688,8 @@ label {
     background-color: #fafcfd;
     border-radius: 1.5rem;
     padding: 2rem;
+    /* Add scroll margin for sections targeted by nav */
+    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
 
 .highlight-title {
@@ -921,6 +929,7 @@ label {
     box-shadow: var(--accent) 0 0 15px 0;
     padding: 2rem;
     box-sizing: border-box;
+    scroll-margin-top: 80px;
 }
 
 .interactive-section {
@@ -970,9 +979,9 @@ label {
     border-radius: 0;
     max-width: 1200px;
     width: 100%;
-    padding: 8px 1rem;
+    padding: 12px 1rem;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     margin: 0 auto;
 }
 
@@ -1004,6 +1013,8 @@ label {
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     box-sizing: border-box;
+    /* Add scroll margin if needed, though not in nav */
+    /* scroll-margin-top: 80px; */
 }
 
 #image-gallery h2 {
@@ -1114,4 +1125,3 @@ label {
     text-decoration: none;
     cursor: pointer;
 }
-
