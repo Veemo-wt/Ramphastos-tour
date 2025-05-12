@@ -109,6 +109,12 @@ h1 {
     flex-direction: column;
     justify-content: center;
     box-shadow: var(--accent) 0 0 15px 0px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-info:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--accent) 0 0 18px 2px;
 }
 
 .product-image {
@@ -384,8 +390,12 @@ footer {
     box-shadow: var(--accent) 0 0 15px 0;
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-
+.text-block:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--accent) 0 0 18px 2px;
 }
 
 .image-block {
@@ -703,6 +713,15 @@ label {
     scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
 }
 
+.excursion-section .text-block {
+    transition: none;  /* Remove transition on the container */
+}
+
+.excursion-section .text-block:hover {
+    transform: none;  /* Prevent the container from lifting */
+    box-shadow: var(--accent) 0 0 15px 0;  /* Keep the original shadow */
+}
+
 .highlight-title {
     color: var(--accent);
     font-size: 2.2rem;
@@ -736,6 +755,12 @@ label {
     border-radius: 1rem;
     min-width: 120px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
 }
 
 .highlight-item .material-symbols-outlined {
@@ -787,6 +812,12 @@ label {
     padding: 1.5rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
     width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
 }
 
 .activity-block .material-symbols-outlined {
@@ -886,6 +917,12 @@ label {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ciekawostka-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
 }
 
 .icon-highlight {
@@ -1052,6 +1089,13 @@ label {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.gallery-grid figure:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-grid img {
@@ -1145,3 +1189,121 @@ label {
     color: inherit;
     cursor: pointer;
 }
+.insurance-image{
+    width: 10rem;
+    height: auto;
+    padding: 3rem;
+    border-radius: 3rem;
+}
+#insurance-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem auto;
+    max-width: 1200px;
+    background-color: var(--accent-mono);
+    padding: 2.5rem;
+    border-radius: 3rem;
+    box-shadow: var(--accent) 0 0 15px 0;
+    box-sizing: border-box;
+    scroll-margin-top: 80px;
+}
+
+.insurance-content {
+    width: 100%;
+    max-width: 900px;
+}
+
+.insurance-provider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.insurance-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+}
+
+.provider-label {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.insurance-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.insurance-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--background);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insurance-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.insurance-item .material-symbols-outlined {
+    font-size: 1.8rem;
+    color: var(--primary);
+    background-color: rgba(0, 124, 195, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.insurance-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--background);
+    border-radius: 1.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.generali-badge {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.insurance-note {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .insurance-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .insurance-item .material-symbols-outlined {
+        margin-bottom: 0.5rem;
+    }
+}
+
