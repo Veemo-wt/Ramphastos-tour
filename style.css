@@ -1306,4 +1306,7 @@ label {
         margin-bottom: 0.5rem;
     }
 }
-
+.sources-list li a{
+    text-decoration: underline;
+    color: var(--primary);
+}
