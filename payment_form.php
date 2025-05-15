@@ -39,12 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $filename = $dir . '/' . date('Y-m-d_H-i-s') . '_' . preg_replace('/[^a-zA-Z0-9]/', '', $name) . '.json';
     file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));
-    
-    // Return success response
+
     header('Content-Type: application/json');
     echo json_encode([
-        'status' => 'success',
-        'message' => 'Twoja płatność została zarejestrowana. Dziękujemy za zakup!'
+        'status' => 'error',
+        'message' => 'Wystąpił nieoczekiwany błąd podczas przetwarzania płatności. Prosimy spróbować ponownie później.'
     ]);
     exit;
 
