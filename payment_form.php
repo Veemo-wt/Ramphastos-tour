@@ -1,15 +1,21 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"] ?? '';
-    $email = $_POST["email"] ?? '';
-    $phone = $_POST["phone"] ?? '';
-    $method = $_POST["method"] ?? '';
-    $card = $_POST["card"] ?? '';
-    $expiry = $_POST["expiry"] ?? '';
-    $cvc = $_POST["cvc"] ?? '';
-    $blik = $_POST["blik-code"] ?? '';
 
-    // Check if we're already at capacity (hard-coded limit of 3 registrations)
+function sanitize_input($data) {
+    return htmlspecialchars(strip_tags(trim($data)));
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+ 
+
+    $name = sanitize_input($_POST["name"] ?? '');
+    $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+    $phone = sanitize_input($_POST["phone"] ?? '');
+    $method = sanitize_input($_POST["method"] ?? '');
+    $card = sanitize_input($_POST["card"] ?? '');
+    $expiry = sanitize_input($_POST["expiry"] ?? '');
+    $cvc = sanitize_input($_POST["cvc"] ?? '');
+    $blik = sanitize_input($_POST["blik-code"] ?? '');
+
     $dir = 'payments';
     if (!file_exists($dir)) {
         mkdir($dir, 0777, true);

@@ -1,8 +1,16 @@
 <?php
+
+function sanitize_input($data) {
+    return htmlspecialchars(strip_tags(trim($data)));
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST['name'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $message = $_POST['message'] ?? '';
+
+    $name = sanitize_input($_POST['name'] ?? '');
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $message = sanitize_input($_POST['message'] ?? '');
+    
+    //tu byloby gdzies sprawdzenie czy jakie pole nie jest puste ale to jest tu niepotrzebne
 
     $data = [
         'name' => $name,
