@@ -1,20 +1,20 @@
 <?php
 
-function sanitize_input($data) {
+function sanitize($data) {
     return htmlspecialchars(strip_tags(trim($data)));
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
  
 
-    $name = sanitize_input($_POST["name"] ?? '');
+    $name = sanitize($_POST["name"] ?? '');
     $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
-    $phone = sanitize_input($_POST["phone"] ?? '');
-    $method = sanitize_input($_POST["method"] ?? '');
-    $card = sanitize_input($_POST["card"] ?? '');
-    $expiry = sanitize_input($_POST["expiry"] ?? '');
-    $cvc = sanitize_input($_POST["cvc"] ?? '');
-    $blik = sanitize_input($_POST["blik-code"] ?? '');
+    $phone = sanitize($_POST["phone"] ?? '');
+    $method = sanitize($_POST["method"] ?? '');
+    $card = sanitize($_POST["card"] ?? '');
+    $expiry = sanitize($_POST["expiry"] ?? '');
+    $cvc = sanitize($_POST["cvc"] ?? '');
+    $blik = sanitize($_POST["blik-code"] ?? '');
 
     $dir = 'payments';
     if (!file_exists($dir)) {
