@@ -90,12 +90,11 @@ h1 {
     gap: 2rem;
     align-items: stretch;
     justify-content: center;
-    /* Add scroll margin for sections targeted by nav */
-    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
-    max-width: 1200px; /* Ensure max width */
+    scroll-margin-top: 80px;
+    max-width: 1200px;
     box-sizing: border-box;
-    margin-left: auto; /* Center the section */
-    margin-right: auto; /* Center the section */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .product-info {
@@ -167,10 +166,10 @@ h1 {
     width: 100%;
     max-width: 700px;
     border: 2px solid var(--accent);
-    border-radius: 3rem; /* Keep radius on the main container */
+    border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     background-color: var(--background);
-    overflow: hidden; /* Ensures clipping */
+    overflow: hidden;
     padding: 0;
     box-sizing: border-box;
 }
@@ -374,8 +373,7 @@ footer {
     padding: 1rem;
     flex-direction: row;
     box-sizing: border-box;
-    /* Add scroll margin for sections targeted by nav */
-    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
+    scroll-margin-top: 80px;
 }
 
 .dual-section.reverse {
@@ -451,19 +449,6 @@ footer {
     min-height: 30rem;
 }
 
-@media (max-width: 900px) {
-    .triple-section {
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-
-    .triple-section .img-25,
-    .triple-section .img-45 {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}
-
 #pog-klim {
     padding-top: 2rem;
     padding-bottom: 0;
@@ -507,8 +492,7 @@ footer {
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     box-sizing: border-box;
-    /* Add scroll margin for sections targeted by nav */
-    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
+    scroll-margin-top: 80px;
 }
 
 .to,
@@ -709,17 +693,16 @@ label {
     background-color: #fafcfd;
     border-radius: 1.5rem;
     padding: 2rem;
-    /* Add scroll margin for sections targeted by nav */
-    scroll-margin-top: 80px; /* Adjust value based on sticky nav height */
+    scroll-margin-top: 80px;
 }
 
 .excursion-section .text-block {
-    transition: none;  /* Remove transition on the container */
+    transition: none;
 }
 
 .excursion-section .text-block:hover {
-    transform: none;  /* Prevent the container from lifting */
-    box-shadow: var(--accent) 0 0 15px 0;  /* Keep the original shadow */
+    transform: none;
+    box-shadow: var(--accent) 0 0 15px 0;
 }
 
 .highlight-title {
@@ -887,10 +870,10 @@ label {
 }
 
 #attractions {
-    max-width: 1200px; /* Update max width */
+    max-width: 1200px;
     box-sizing: border-box;
-    margin-left: auto; /* Ensure centering */
-    margin-right: auto; /* Ensure centering */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .highlight-box {
@@ -1064,8 +1047,6 @@ label {
     border-radius: 3rem;
     box-shadow: var(--accent) 0 0 15px 0;
     box-sizing: border-box;
-    /* Add scroll margin if needed, though not in nav */
-    /* scroll-margin-top: 80px; */
 }
 
 #image-gallery h2 {
@@ -1295,17 +1276,6 @@ label {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .insurance-item {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem 1rem;
-    }
-    
-    .insurance-item .material-symbols-outlined {
-        margin-bottom: 0.5rem;
-    }
-}
 .sources-list li a{
     text-decoration: underline;
     color: var(--primary);
